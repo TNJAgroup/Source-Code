@@ -1,23 +1,29 @@
+/**
+ * @author Nick Rigert
+ * @version 2
+ * Last updated by: Taylor Jones
+ * Last Date Changed: 4/15/2016
+ * 
+ * Encryption class provides the encrypt and decrypt methods for its subclasses 
+ * and allows the user to get and set both the encryoted and unencrypted message.
+ */
+
 import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.awt.Color;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import java.awt.BorderLayout;
-
+import javax.swing.JTextField;
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-
-import java.awt.Font;
-import java.awt.Graphics;
-
 import javax.swing.SwingConstants;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -137,6 +143,46 @@ public class MainMenuGUI {
 		JMenu mnFile = new JMenu("File");
 		menuBar.add(mnFile);
 		
+		JMenuItem info = new JMenuItem("Information");
+		mnFile.add(info);
+		
+		JFrame infoFrame = new JFrame();
+		infoFrame.setSize(350, 200);
+		GridBagLayout infolayout = new GridBagLayout();
+		infoFrame.setLayout(infolayout);
+		
+		JTextField names = new JTextField("Developers:");
+		names.setEditable(false);
+		names.setBorder(BorderFactory.createEmptyBorder());
+		GridBagConstraints namesConstraints = new GridBagConstraints();
+		namesConstraints.gridx = 0;
+		namesConstraints.gridy = 0;
+		infoFrame.add(names,namesConstraints);
+		
+		JTextField names2 = new JTextField("Taylor Jones, Nick Rigert, Alyssa Crosby, Johnny Bac");
+		names2.setEditable(false);
+		names2.setBorder(BorderFactory.createEmptyBorder());
+		GridBagConstraints names2Constraints = new GridBagConstraints();
+		names2Constraints.gridx = 0;
+		names2Constraints.gridy = 1;
+		infoFrame.add(names2,names2Constraints);
+		
+		JTextField version = new JTextField("Version: 1.4.7");
+		version.setEditable(false);
+		version.setBorder(BorderFactory.createEmptyBorder());
+		GridBagConstraints versionConstraints = new GridBagConstraints();
+		versionConstraints.gridx = 0;
+		versionConstraints.gridy = 2;
+		infoFrame.add(version,versionConstraints);
+		
+		info.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				infoFrame.setVisible(true);
+			}
+		});
+		
 		JMenuItem mntmNew = new JMenuItem("New...");
 		mntmNew.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -171,11 +217,11 @@ public class MainMenuGUI {
 			}
 		});
 		
-		mnFile.add(mntmNew);
+		//mnFile.add(mntmNew);
 		
 		JMenuItem mntmBack = new JMenuItem("Back");
 		mntmBack.setEnabled(false);
-		mnFile.add(mntmBack);
+		//mnFile.add(mntmBack);
 		
 		JMenuItem mntmExitProgram = new JMenuItem("Exit Program");
 		mntmExitProgram.addActionListener(new ActionListener() {
