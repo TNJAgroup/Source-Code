@@ -103,7 +103,7 @@ public class EncryptDecryptGUI extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Encrypt/Decrypt");
         setPreferredSize(new java.awt.Dimension(700, 320));
         setResizable(false);
@@ -398,8 +398,8 @@ public class EncryptDecryptGUI extends javax.swing.JFrame {
             try {
             	morsecipher.decrypt();
             } catch (CipherException ex) {
-            	ErrorWindow.setVisible(true);
             	ErrorWindowLabel.setText(ex.getMessage());
+            	ErrorWindow.setVisible(true);
             	morsecipher.setMessage("");
             }
             String decryptedText = morsecipher.getMessage();
@@ -452,8 +452,8 @@ public class EncryptDecryptGUI extends javax.swing.JFrame {
             try {
             	morsecipher.encrypt();
             } catch (CipherException ex) {
-            	ErrorWindow.setVisible(true);
             	ErrorWindowLabel.setText(ex.getMessage());
+            	ErrorWindow.setVisible(true);
             	morsecipher.setEncryptedMessage("");
             }
             String encryptedText = morsecipher.getEncryptedMessage();

@@ -15,10 +15,34 @@ public class GameGUI extends JFrame
 	{
 		setTitle("Game");
 		setSize(800,500);
-		GridBagLayout layout = new GridBagLayout();
-		setLayout(layout);
+		//GridBagLayout layout = new GridBagLayout();
+		//setLayout(layout);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBackground(Color.white);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setVisible(true);
+		GridBagConstraints menuConstraints = new GridBagConstraints();
+		menuConstraints.gridx = 0;
+		menuConstraints.gridy = 0;
+		menuConstraints.anchor = GridBagConstraints.NORTH;
+		setJMenuBar(menuBar);
+		
+		JMenu mnFile = new JMenu("File");
+		menuBar.add(mnFile);
+		
+		JMenuItem info = new JMenuItem("Information");
+		mnFile.add(info);
+		
+		JMenuItem mntmExitProgram = new JMenuItem("Exit Program");
+		mnFile.add(mntmExitProgram);
+		
+		JPanel panel = new JPanel();
+		panel.setLayout(new GridBagLayout());
+		GridBagConstraints panelConstraints = new GridBagConstraints();
+		panelConstraints.gridx = 0;
+		panelConstraints.gridy = 1;
+		add(panel);
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new GridBagLayout());
@@ -27,19 +51,19 @@ public class GameGUI extends JFrame
 		mainPanelConstraints.gridy = 1;
 		//mainPanel.setBackground(Color.white);
 		//mainPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-		add(mainPanel,mainPanelConstraints);
+		panel.add(mainPanel,mainPanelConstraints);
 		
 		//First panel that displays choices
 		JPanel scrollPanel = new JPanel();
 		scrollPanel.setLayout(new GridBagLayout());
 		//scrollPanel.setBackground(Color.white);
 		//scrollPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-		GridBagConstraints panelConstraints = new GridBagConstraints();
-		panelConstraints.weightx = 0.5;
-		panelConstraints.gridx = 0;
-		panelConstraints.gridy = 1;
-		panelConstraints.insets = new Insets(10,10,10,10);
-		mainPanel.add(scrollPanel,panelConstraints);
+		GridBagConstraints scrollpanelConstraints = new GridBagConstraints();
+		scrollpanelConstraints.weightx = 0.5;
+		scrollpanelConstraints.gridx = 0;
+		scrollpanelConstraints.gridy = 1;
+		scrollpanelConstraints.insets = new Insets(10,10,10,10);
+		mainPanel.add(scrollPanel,scrollpanelConstraints);
 		
 		JTextField phraseNumberTitle= new JTextField("Phrase Number");
 		GridBagConstraints phraseNumberTitleConstraints = new GridBagConstraints();
@@ -202,7 +226,7 @@ public class GameGUI extends JFrame
 		choicesConstraints.gridy = 2;
 		choicesConstraints.ipadx = 340;
 		choicesConstraints.insets = new Insets(10,10,10,10);
-		add(choicesPanel,choicesConstraints);
+		panel.add(choicesPanel,choicesConstraints);
 		
 		JButton checkInput = new JButton("Check Input");
 		GridBagConstraints checkInputConstraints = new GridBagConstraints();
@@ -253,15 +277,52 @@ public class GameGUI extends JFrame
 		gameConstraints.gridx = 0;
 		gameConstraints.gridy = 0;
 		gameConstraints.ipadx = 100;
-		add(game, gameConstraints);
+		panel.add(game, gameConstraints);
 		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setVisible(true);
-		GridBagConstraints menuBarConstraints = new GridBagConstraints();
-		menuBarConstraints.gridx = 0;
-		menuBarConstraints.gridy = 0;
-		add(menuBar,menuBarConstraints);
+		JFrame infoFrame = new JFrame();
+		infoFrame.setSize(350, 200);
+		GridBagLayout infolayout = new GridBagLayout();
+		infoFrame.setLayout(infolayout);
 		
+		JTextField names = new JTextField("Developers:");
+		names.setEditable(false);
+		names.setBorder(BorderFactory.createEmptyBorder());
+		GridBagConstraints namesConstraints = new GridBagConstraints();
+		namesConstraints.gridx = 0;
+		namesConstraints.gridy = 0;
+		infoFrame.add(names,namesConstraints);
+		
+		JTextField names2 = new JTextField("Taylor Jones, Nick Rigert, Alyssa Crosby, Johnny Bac");
+		names2.setEditable(false);
+		names2.setBorder(BorderFactory.createEmptyBorder());
+		GridBagConstraints names2Constraints = new GridBagConstraints();
+		names2Constraints.gridx = 0;
+		names2Constraints.gridy = 1;
+		infoFrame.add(names2,names2Constraints);
+		
+		JTextField version = new JTextField("Version: 1.4.7");
+		version.setEditable(false);
+		version.setBorder(BorderFactory.createEmptyBorder());
+		GridBagConstraints versionConstraints = new GridBagConstraints();
+		versionConstraints.gridx = 0;
+		versionConstraints.gridy = 2;
+		infoFrame.add(version,versionConstraints);
+		
+		info.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				infoFrame.setVisible(true);
+			}
+		});
+		
+		mntmExitProgram.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				dispose();
+			}
+		});
 		
 		checkInput.addActionListener(new ActionListener()
 		{
