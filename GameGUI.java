@@ -1,7 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.*;
+
+import java.io.File;
 import java.io.IOException;
 
 public class GameGUI extends JFrame
@@ -17,25 +22,28 @@ public class GameGUI extends JFrame
 		
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new GridBagLayout());
-		mainPanel.setBackground(Color.white);
-		mainPanel.setBorder(BorderFactory.createLineBorder(Color.black));
-		add(mainPanel);
+		GridBagConstraints mainPanelConstraints = new GridBagConstraints();
+		mainPanelConstraints.gridx = 0;
+		mainPanelConstraints.gridy = 1;
+		//mainPanel.setBackground(Color.white);
+		//mainPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		add(mainPanel,mainPanelConstraints);
 		
 		//First panel that displays choices
 		JPanel scrollPanel = new JPanel();
 		scrollPanel.setLayout(new GridBagLayout());
-		scrollPanel.setBackground(Color.white);
-		scrollPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		//scrollPanel.setBackground(Color.white);
+		//scrollPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		GridBagConstraints panelConstraints = new GridBagConstraints();
 		panelConstraints.weightx = 0.5;
 		panelConstraints.gridx = 0;
-		panelConstraints.gridy = 0;
+		panelConstraints.gridy = 1;
 		panelConstraints.insets = new Insets(10,10,10,10);
 		mainPanel.add(scrollPanel,panelConstraints);
 		
 		JTextField phraseNumberTitle= new JTextField("Phrase Number");
 		GridBagConstraints phraseNumberTitleConstraints = new GridBagConstraints();
-		phraseNumberTitle.setBackground(Color.white);
+		//phraseNumberTitle.setBackground(Color.white);
 		phraseNumberTitle.setEditable(false);
 		phraseNumberTitle.setBorder(BorderFactory.createEmptyBorder());
 		phraseNumberTitleConstraints.anchor = GridBagConstraints.WEST;
@@ -78,18 +86,18 @@ public class GameGUI extends JFrame
 		//Second Panel with user internal panels
 		JPanel secondPanel = new JPanel();
 		secondPanel.setLayout(new GridBagLayout());
-		secondPanel.setBackground(Color.white);
-		secondPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		//secondPanel.setBackground(Color.white);
+		//secondPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		GridBagConstraints secondConstraints = new GridBagConstraints();
 		secondConstraints.weightx = 0.5;
 		secondConstraints.gridx = 1;
-		secondConstraints.gridy = 0;
+		secondConstraints.gridy = 1;
 		secondConstraints.insets = new Insets(10,10,10,10);
 		mainPanel.add(secondPanel,secondConstraints);
 		
 		JPanel message = new JPanel();
 		message.setLayout(new GridBagLayout());
-		message.setBackground(Color.white);
+		//message.setBackground(Color.white);
 		message.setBorder(BorderFactory.createEmptyBorder());
 		GridBagConstraints messageCosntraints = new GridBagConstraints();
 		messageCosntraints.weightx = 0.5;
@@ -102,7 +110,7 @@ public class GameGUI extends JFrame
 		JTextField encryptedMessage = new JTextField("Encrypted Message");
 		GridBagConstraints encryptedMessageConstraints = new GridBagConstraints();
 		encryptedMessage.setBackground(Color.white);
-		//encryptedMessage.setEditable(false);
+		encryptedMessage.setEditable(false);
 		encryptedMessageConstraints.anchor = GridBagConstraints.WEST;
 		encryptedMessageConstraints.gridx = 0;
 		encryptedMessageConstraints.gridy = 0;
@@ -112,7 +120,7 @@ public class GameGUI extends JFrame
 		
 		JPanel answerPanel = new JPanel();
 		answerPanel.setLayout(new GridBagLayout());
-		answerPanel.setBackground(Color.white);
+		//answerPanel.setBackground(Color.white);
 		answerPanel.setBorder(BorderFactory.createEmptyBorder());
 		GridBagConstraints answerPanelConstraints = new GridBagConstraints();
 		answerPanelConstraints.weightx = 0.5;
@@ -124,7 +132,7 @@ public class GameGUI extends JFrame
 		
 		JTextField letter1 = new JTextField();
 		GridBagConstraints letter1Constraints = new GridBagConstraints();
-		letter1.setBackground(Color.white);
+		//letter1.setBackground(Color.white);
 		//letter1Constraints.anchor = GridBagConstraints.WEST;
 		letter1Constraints.weightx = 0.5;
 		letter1Constraints.gridx = 0;
@@ -186,12 +194,12 @@ public class GameGUI extends JFrame
 		//Third Panel with user choices
 		JPanel choicesPanel = new JPanel();
 		choicesPanel.setLayout(new GridBagLayout());
-		choicesPanel.setBackground(Color.white);
-		choicesPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+		//choicesPanel.setBackground(Color.white);
+		//choicesPanel.setBorder(BorderFactory.createLineBorder(Color.black));
 		GridBagConstraints choicesConstraints = new GridBagConstraints();
 		choicesConstraints.weightx = 0.5;
 		choicesConstraints.gridx = 0;
-		choicesConstraints.gridy = 1;
+		choicesConstraints.gridy = 2;
 		choicesConstraints.ipadx = 340;
 		choicesConstraints.insets = new Insets(10,10,10,10);
 		add(choicesPanel,choicesConstraints);
@@ -200,29 +208,60 @@ public class GameGUI extends JFrame
 		GridBagConstraints checkInputConstraints = new GridBagConstraints();
 		checkInputConstraints.gridx = 0;
 		checkInputConstraints.gridy = 0;
-		checkInputConstraints.insets = new Insets(10,10,10,10);
+		checkInputConstraints.ipady = 20;
+		checkInputConstraints.ipadx = 30;
+		checkInputConstraints.insets = new Insets(10,10,10,50);
 		choicesPanel.add(checkInput, checkInputConstraints);
 		
 		JButton solve = new JButton("Solve");
 		GridBagConstraints solveConstraints = new GridBagConstraints();
 		solveConstraints.gridx = 1;
 		solveConstraints.gridy = 0;
-		solveConstraints.insets = new Insets(10,10,10,10);
+		solveConstraints.ipady = 20;
+		solveConstraints.ipadx = 60;
+		solveConstraints.insets = new Insets(10,10,10,50);
 		choicesPanel.add(solve, solveConstraints);
 		
 		JButton hint = new JButton("Hint");
 		GridBagConstraints hintConstraints = new GridBagConstraints();
 		hintConstraints.gridx = 2;
 		hintConstraints.gridy = 0;
-		hintConstraints.insets = new Insets(10,10,10,10);
+		hintConstraints.ipady = 20;
+		hintConstraints.ipadx = 60;
+		hintConstraints.insets = new Insets(10,10,10,50);
 		choicesPanel.add(hint, hintConstraints);
 		
 		JButton exit = new JButton("Exit");
 		GridBagConstraints exitConstraints = new GridBagConstraints();
 		exitConstraints.gridx = 3;
 		exitConstraints.gridy = 0;
+		exitConstraints.ipady = 20;
+		exitConstraints.ipadx = 60;
 		exitConstraints.insets = new Insets(10,10,10,10);
 		choicesPanel.add(exit, exitConstraints);
+		
+		BufferedImage gamePic = null;
+		try 
+		{
+			gamePic = ImageIO.read(new File("games.jpg"));
+			
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		JLabel game = new JLabel(new ImageIcon(gamePic));
+		GridBagConstraints gameConstraints = new GridBagConstraints();
+		gameConstraints.gridx = 0;
+		gameConstraints.gridy = 0;
+		gameConstraints.ipadx = 100;
+		add(game, gameConstraints);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setVisible(true);
+		GridBagConstraints menuBarConstraints = new GridBagConstraints();
+		menuBarConstraints.gridx = 0;
+		menuBarConstraints.gridy = 0;
+		add(menuBar,menuBarConstraints);
+		
 		
 		checkInput.addActionListener(new ActionListener()
 		{
@@ -231,6 +270,10 @@ public class GameGUI extends JFrame
 				if(letter1.getText().equals(Game.getAnswer()))
 				{
 					letter1.setBackground(Color.green);
+				}
+				else if(letter1.getText().equals(""))
+				{
+					
 				}
 				else
 				{
@@ -241,6 +284,10 @@ public class GameGUI extends JFrame
 				{
 					letter2.setBackground(Color.green);
 				}
+				else if(letter2.getText().equals(""))
+				{
+					
+				}
 				else
 				{
 					letter2.setBackground(Color.red);
@@ -249,6 +296,10 @@ public class GameGUI extends JFrame
 				if(letter3.getText().equals(String.valueOf(Game.getLetter(1))))
 				{
 					letter3.setBackground(Color.green);
+				}
+				else if(letter3.getText().equals(""))
+				{
+					
 				}
 				else
 				{
@@ -259,6 +310,10 @@ public class GameGUI extends JFrame
 				{
 					letter4.setBackground(Color.green);
 				}
+				else if(letter4.getText().equals(""))
+				{
+					
+				}
 				else
 				{
 					letter4.setBackground(Color.red);
@@ -268,6 +323,10 @@ public class GameGUI extends JFrame
 				{
 					letter5.setBackground(Color.green);
 				}
+				else if(letter5.getText().equals(""))
+				{
+					
+				}
 				else
 				{
 					letter5.setBackground(Color.red);
@@ -276,10 +335,15 @@ public class GameGUI extends JFrame
 				{
 					letter6.setBackground(Color.green);
 				}
+				
+				else if(letter6.getText().equals(""))
+				{
+					
+				}
 				else
 				{
 					letter6.setBackground(Color.red);
-				}
+				}				
 			}
 		});
 		
@@ -333,7 +397,12 @@ public class GameGUI extends JFrame
 				{
 					Morse morsecipher = new Morse();
 					morsecipher.setMessage(Game.getAnswer());
-					morsecipher.encrypt();
+					try {
+						morsecipher.encrypt();
+					} catch (CipherException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 					String text = morsecipher.getEncryptedMessage();
 					encryptedMessage.setText(text);
 				}
