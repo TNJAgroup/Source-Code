@@ -90,8 +90,8 @@ public class Learn {
 							+ " of substitution cipher in which each <br>"
 							+ "letter in the plaintext is 'shifted' <br>"
 							+ "a certain number of places down the alphabet. <br>"
-							+ "For example, with a shift of 1, A would be replaced by B,<br>"
-							+ " B would become C, and so on. <br>"
+							//+ "For example, with a shift of 1, A would be replaced by B,<br>"
+							//+ " B would become C, and so on. <br>"
 							+ "See picture 2.</body></html>");
 				}
 			}
