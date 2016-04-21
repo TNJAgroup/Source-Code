@@ -1,11 +1,11 @@
 /**
  * @author Johnny Bac
- * @version 2
+ * @version 3
  * Last updated by: Johnny Bac
- * Last Date Changed: 4/14/2016
+ * Last Date Changed: 4/17/2016
  * 
  * Encryption class provides the encrypt and decrypt methods for its subclasses 
- * and allows the user to get and set both the encryoted and unencrypted message.
+ * and allows the user to get and set both the encrypted and unencrypted message.
  */
 
 public abstract class Encryption {
@@ -68,7 +68,7 @@ public abstract class Encryption {
     * 
     * encrypt should call setEncryptedMessage
     */
-   public abstract void encrypt();
+   public abstract void encrypt() throws CipherException;
    
    /**
     * Abstract method that decrypts the message. Must be implemented 
@@ -76,5 +76,19 @@ public abstract class Encryption {
     * 
     * decrypt should call setMessage
     */
-   public abstract void decrypt();
+   public abstract void decrypt() throws CipherException;
+}
+
+
+@SuppressWarnings("serial")
+/**
+ * The CipherException class is a user defined Exception class that is
+ * specifically used for throwing exceptions when invalid input is provided 
+ * in the ciphers.
+ *
+ */
+class CipherException extends Exception{
+	public CipherException(String msg) {
+		super(msg);
+	}
 }
