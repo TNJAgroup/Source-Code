@@ -486,14 +486,14 @@ public class EncryptDecryptGUI extends javax.swing.JFrame {
     }                                                     
 
     
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new EncryptDecryptGUI().setVisible(true);
             }
         });
-    }
+    }*/
 
                        
     private javax.swing.JPanel AffinePanel;

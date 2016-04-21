@@ -275,10 +275,10 @@ public class Learn {
 	}
 
 
-private void displayActionPerformed(java.awt.event.ActionEvent evt){
+/*private void displayActionPerformed(java.awt.event.ActionEvent evt){
 	ButtonModel buttonModel = buttonGroup.getSelection();
 	if (buttonModel != null){
 		String actionCommand = buttonModel.getActionCommand();
 }}
-	
+	*/
 }
