@@ -1,30 +1,40 @@
-import java.awt.Color;
 import java.awt.EventQueue;
 
-import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+import java.awt.Component;
+
+import javax.imageio.ImageIO;
+import javax.swing.Box;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JRadioButton;
+import javax.swing.JSeparator;
+import javax.swing.JMenuBar;
+import java.awt.Button;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.awt.event.ActionEvent;
+import java.awt.Color;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.SwingConstants;
 import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-public class Learn extends JFrame{
-	public JFrame frmCryptographyTrainer;
+public class Learn {
+	JFrame frmCryptographyTrainer;
 	private ButtonGroup buttonGroup = new ButtonGroup();
 	final JLabel lblSym = new JLabel("Pick a cipher to learn more!");
 	//final JLabel lblPic = new JLabel("intro.jpg");
@@ -61,7 +71,7 @@ public class Learn extends JFrame{
 		frmCryptographyTrainer.setResizable(false);
 		frmCryptographyTrainer.setTitle("Info");
 		frmCryptographyTrainer.setBounds(100, 100, 818, 455);
-		frmCryptographyTrainer.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frmCryptographyTrainer.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmCryptographyTrainer.getContentPane().setLayout(null);
 		
 		
@@ -71,12 +81,14 @@ public class Learn extends JFrame{
 				ButtonModel buttonModel = buttonGroup.getSelection();
 				if (buttonModel != null){
 					lblSym.setText("<html><body>Caesarian Cipher: <br>"
-							+ "The Caesar cipher is one of the earliest known and <br>"
-							+ "simplest ciphers. It is a type of substitution cipher <br>"
-							+ "in which each letter in the plaintext is 'shifted' <br>"
+							+ "The Caesar cipher is one of the earliest <br>"
+							+ " known and simplest ciphers. It is a type <br>"
+							+ " of substitution cipher in which each <br>"
+							+ "letter in the plaintext is 'shifted' <br>"
 							+ "a certain number of places down the alphabet. <br>"
 							+ "For example, with a shift of 1, A would be replaced by B,<br>"
-							+ " B would become C, and so on. </body></html>");
+							+ " B would become C, and so on. <br>"
+							+ "See picture 2.</body></html>");
 				}
 			}
 		});
@@ -92,9 +104,9 @@ public class Learn extends JFrame{
 				if (buttonModel != null){
 					lblSym.setText("<html><body>Symbol Cipher<br>This cipher uses the numeric<br>and punctuational symbols "
 							+ "from <br> the keyboard to output a seemingly jumbled message. <br>"
-							+ "For example, # could represent a or 3 could be y.</body></html>");	
+							+ "For example, # could represent a or 3 could be y.<br>"
+							+ "See picture 3.</body></html>");	
 					img = new ImageIcon("caesar.png");
-					//lblPic.setIcon(img);
 				}
 			}
 		});
@@ -117,7 +129,8 @@ public class Learn extends JFrame{
 							+ "The affine cipher is a type of monoalphabetic <br>"
 							+ "substitution cipher, wherein each letter in an alphabet<br>"
 							+ " is mapped to its numeric equivalent, encrypted using a <br>" 
-							+ "simple mathematical function, and converted back to a letter.</body></html>");	
+							+ "simple mathematical function, and converted back to a letter.<br>"
+							+ "See picture 4.</body></html>");	
 					
 				}
 			}
@@ -135,7 +148,8 @@ public class Learn extends JFrame{
 							+ "An alphabet or code in which letters are represented <br>"
 							+ " by combinations of long and short signals of light <br>"
 							+ "or sound.  Most commonly used for communication through <br>"
-							+ "telegrams before there were telephones.</body></html>");
+							+ "telegrams before there were telephones.<br>"
+							+ "See picture 5.</body></html>");
 				}
 			}
 		});
@@ -151,37 +165,42 @@ public class Learn extends JFrame{
 		});
 		btnExit.setBounds(40, 314, 92, 43);
 		frmCryptographyTrainer.getContentPane().add(btnExit);
-		/*
-		BufferedImage introPic = null;
+		
+		BufferedImage symbolPic = null;
 		BufferedImage caesarPic = null;
 		BufferedImage affinePic = null;
-		BufferedImage introPic = null;
-		//BufferedImage exitPic = null;*/
-		/*try {
-			//caesarPic = ImageIO.read(new File("caesar.png"));
-			//affinePic = ImageIO.read(new File("affine.png"));
-			introPic = ImageIO.read(new File("intro.jpg"));
-			//exitPic = ImageIO.read(new File("C:\\Users\\Command Center\\Desktop\\Gonzaga\\dbmm.png"));
+		BufferedImage introPic1 = null;
+		BufferedImage morsePic = null;
+		try {
+			caesarPic = ImageIO.read(new File("CaesarPic.png"));
+			affinePic = ImageIO.read(new File("affinePic.png"));
+			introPic1 = ImageIO.read(new File("intro.jpg"));
+			symbolPic = ImageIO.read(new File("symbolPic.png"));
+			morsePic  = ImageIO.read(new File("morse_pic.png"));
 		} catch (IOException e1) {
 			e1.printStackTrace();
-		}/*
+		}
 		JLabel CaesarPic = new JLabel(new ImageIcon(caesarPic));
 		JLabel AffinePic = new JLabel(new ImageIcon(affinePic));
-		AffinePic.setLocation(246, 194);
-		AffinePic.setSize(126, 96);
-		JLabel IntroPic = new JLabel(new ImageIcon(introPic));
-		IntroPic.setLocation(440, 194);
-		IntroPic.setSize(126, 96);
-		/*JLabel exitButtonPic = new JLabel(new ImageIcon(exitPic));
-		exitButtonPic.setLocation(628, 194);
-		exitButtonPic.setSize(126, 96);*/
-		//CaesarPic.setLocation(350, 194);
-		//CaesarPic.setSize(200, 260);
-		//frmCryptographyTrainer.getContentPane().add(CaesarPic);
-		//frmCryptographyTrainer.getContentPane().add(AffinePic);
-		/*frmCryptographyTrainer.getContentPane().add(IntroPic);
-		frmCryptographyTrainer.getContentPane().add(exitButtonPic);
-		*/
+		AffinePic.setLocation(190, 300);
+		AffinePic.setSize(210, 96);
+		JLabel SymbolPic = new JLabel(new ImageIcon(symbolPic));
+		SymbolPic.setLocation(190, 255);;
+		SymbolPic.setSize(200,100);
+		JLabel IntroPic = new JLabel(new ImageIcon(introPic1));
+		IntroPic.setLocation(190, 40);
+		IntroPic.setSize(200, 96);
+		JLabel morseCPic = new JLabel(new ImageIcon(morsePic));
+		morseCPic.setLocation(200, 345);
+		morseCPic.setSize(160, 96);
+		CaesarPic.setLocation(190, 80);
+		CaesarPic.setSize(200, 260);
+		frmCryptographyTrainer.getContentPane().add(CaesarPic);
+		frmCryptographyTrainer.getContentPane().add(AffinePic);
+		frmCryptographyTrainer.getContentPane().add(IntroPic);
+		frmCryptographyTrainer.getContentPane().add(morseCPic);
+		frmCryptographyTrainer.getContentPane().add(SymbolPic);
+		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 812, 26);
 		frmCryptographyTrainer.getContentPane().add(menuBar);
