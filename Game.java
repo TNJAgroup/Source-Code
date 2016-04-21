@@ -14,7 +14,7 @@ public class Game
 	
 	public static void loadChoices() throws IOException
 	{
-		File loadedPlanner = new File("src/choices.txt");
+		File loadedPlanner = new File("choices.txt");
 		FileReader loadedReader = new FileReader(loadedPlanner);
 		BufferedReader loadedBuffer = new BufferedReader(loadedReader);
 		StringBuffer stringBuffer = new StringBuffer();

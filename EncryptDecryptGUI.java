@@ -281,7 +281,7 @@ public class EncryptDecryptGUI extends javax.swing.JFrame {
 		});
         File.add(FileInfo);
         
-        FileClose.setText("Close");
+        FileClose.setText("Exit Window");
         FileClose.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 FileCloseActionPerformed(evt);

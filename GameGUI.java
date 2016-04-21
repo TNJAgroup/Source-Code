@@ -34,7 +34,7 @@ public class GameGUI extends JFrame
 		JMenuItem info = new JMenuItem("Information");
 		mnFile.add(info);
 		
-		JMenuItem mntmExitProgram = new JMenuItem("Exit Program");
+		JMenuItem mntmExitProgram = new JMenuItem("Exit Window");
 		mnFile.add(mntmExitProgram);
 		
 		JPanel panel = new JPanel();
@@ -279,7 +279,7 @@ public class GameGUI extends JFrame
 		gameConstraints.ipadx = 100;
 		panel.add(game, gameConstraints);
 		
-		JFrame infoFrame = new JFrame();
+		JFrame infoFrame = new JFrame("Information");
 		infoFrame.setSize(350, 200);
 		GridBagLayout infolayout = new GridBagLayout();
 		infoFrame.setLayout(infolayout);

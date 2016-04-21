@@ -215,7 +215,7 @@ public class Learn {
 		JMenuItem info = new JMenuItem("Information");
 		mnFile.add(info);
 		
-		JFrame infoFrame = new JFrame();
+		JFrame infoFrame = new JFrame("Information");
 		infoFrame.setSize(350, 200);
 		GridBagLayout infolayout = new GridBagLayout();
 		infoFrame.setLayout(infolayout);
@@ -265,7 +265,7 @@ public class Learn {
 		mntmBack.setEnabled(false);
 		//mnFile.add(mntmBack);
 		
-		JMenuItem mntmExitProgram = new JMenuItem("Exit Program");
+		JMenuItem mntmExitProgram = new JMenuItem("Exit Window");
 		mntmExitProgram.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frmCryptographyTrainer.dispose();

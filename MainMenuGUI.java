@@ -146,7 +146,7 @@ public class MainMenuGUI {
 		JMenuItem info = new JMenuItem("Information");
 		mnFile.add(info);
 		
-		JFrame infoFrame = new JFrame();
+		JFrame infoFrame = new JFrame("Information");
 		infoFrame.setSize(350, 200);
 		GridBagLayout infolayout = new GridBagLayout();
 		infoFrame.setLayout(infolayout);
